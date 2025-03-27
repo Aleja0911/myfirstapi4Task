@@ -1,4 +1,4 @@
-package co.edu.umanizales.myfirstapi4;
+package co.edu.umanizales.myfirstapi4.model;
 
 
 import lombok.AllArgsConstructor;
@@ -8,13 +8,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-
 public class Seller {
     private String identification;
     private String name;
-    private String  lastName;
+    private String lastName;
     private String city;
     private byte age;
     private char gender;
-
 }

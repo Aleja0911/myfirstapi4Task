@@ -8,7 +8,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class location {
+public class Location {
     private String code;
     private String description;
+
 }

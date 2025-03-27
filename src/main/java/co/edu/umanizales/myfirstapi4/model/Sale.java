@@ -1,4 +1,4 @@
-package co.edu.umanizales.myfirstapi4;
+package co.edu.umanizales.myfirstapi4.model;
 
 import java.util.Date;
 
