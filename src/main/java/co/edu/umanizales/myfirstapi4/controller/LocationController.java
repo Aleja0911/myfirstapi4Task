@@ -41,18 +41,18 @@ public class LocationController {
 
     }
 
-    @GetMapping(path = "/initialLetters/{InitialLetters}")
+    @GetMapping(path = "/initialLetters/{initial}")
     public List<Location> getLocationByInitial(@PathVariable String initial) {
         return locationService.getLocationsByInitialLetter(initial);
     }
 
-    @GetMapping(path = "/{InitialLetters}")
-    public List<Location> getLocationByLetters(@PathVariable String InitialLetters) {
-        return locationService.getLocationByLetter(InitialLetters);
+    @GetMapping(path = "/StartLetter/{Letters}")
+    public List<Location> getLocationByLetters(@PathVariable String Letters) {
+        return locationService.getLocationByLetter(Letters);
     }
 
 
-    @GetMapping("/StateCode/{statecode}")
+    @GetMapping("/statecode/{stateCode}")
     public List<Location> getLocationByStateCode(@PathVariable String stateCode) {
         return locationService.getLocationByStateCode(stateCode);
 
@@ -63,8 +63,9 @@ public class LocationController {
         return locationService.getCapitals();
     }
 
-    @GetMapping(path = "/StateByCode/{statecode}")
-    public Location getStateByCode(@PathVariable String stateCode) {
-        return locationService.getStateByCode(stateCode);
+
+    @GetMapping(path = "/StateByCode/{stateByCode}")
+    public Location getStateByCode(@PathVariable String stateByCode) {
+        return locationService.getStateByCode(stateByCode);
     }
 }
