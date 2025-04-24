@@ -1,0 +1,54 @@
+package co.edu.umanizales.myfirstapi4.service;
+import co.edu.umanizales.myfirstapi4.model.Store;
+import jakarta.annotation.PostConstruct;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvValidationException;
+
+import java.io.FileReader;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+
+
+
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Service
+public class StoreService {
+
+        private List<Store> store = new ArrayList<>();
+
+        @Value("${store_filename}")
+        private String storeFilename;
+
+        @PostConstruct
+        public void readStoreFromCSV() throws IOException, URISyntaxException {
+            store= new ArrayList<>();
+
+            Path pathFile = Paths.get(getClass().getClassLoader().getResource(storeFilename).toURI());
+
+            try (CSVReader csvReader = new CSVReader(new FileReader(pathFile.toFile()))) {
+                csvReader.skip(1);
+                String[] line;
+                while ((line = csvReader.readNext()) != null) {
+                    store.add(new Store(line[0], line[1], line[2], line[3]));
+                }
+            } catch (CsvValidationException e) {
+                throw new RuntimeException("Error parsing CSV", e);
+            }
+        }
+
+    public List<Store> getAllStores() {
+        return store;
+    }
+}
+

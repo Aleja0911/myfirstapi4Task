@@ -68,4 +68,8 @@ public class LocationController {
     public Location getStateByCode(@PathVariable String stateByCode) {
         return locationService.getStateByCode(stateByCode);
     }
+    @GetMapping(path = "/StartEnd/{initial}/{end}")
+    public List<Location> getStartEnd(@PathVariable String initial, @PathVariable String end) {
+    return locationService.getStartEnd(initial,end);
+    }
 }
