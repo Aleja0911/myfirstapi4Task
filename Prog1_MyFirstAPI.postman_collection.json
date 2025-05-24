@@ -1,0 +1,65 @@
+{
+	"info": {
+		"_postman_id": "f1020652-fd71-4d87-8e1b-01ffc6d8a21e",
+		"name": "Prog1_MyFirstAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "45259654",
+		"_collection_link": "https://alejandradiaz-2944957.postman.co/workspace/Alejandra-Diaz's-Workspace~8de9168f-db38-457c-8c08-23a63b089ab7/collection/45259654-f1020652-fd71-4d87-8e1b-01ffc6d8a21e?action=share&source=collection_link&creator=45259654"
+	},
+	"item": [
+		{
+			"name": "Get Locations",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/location"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Locations By Code",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/location/05001"
+			},
+			"response": []
+		},
+		{
+			"name": "Get States",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/location/states"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Seller",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/seller"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Store",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/store"
+			},
+			"response": []
+		},
+		{
+			"name": "Get product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/product"
+			},
+			"response": []
+		}
+	]
+}
