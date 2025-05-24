@@ -1,18 +1,16 @@
 package co.edu.umanizales.myfirstapi4.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
 public abstract class Parameter {
-
-
-    public Parameter(String code, String description) {
-    }
+    private String code;
+    private String name;
 }
-
-
-
-
-
-
-
 
 
 

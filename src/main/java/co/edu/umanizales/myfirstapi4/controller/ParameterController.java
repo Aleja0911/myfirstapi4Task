@@ -2,14 +2,9 @@ package co.edu.umanizales.myfirstapi4.controller;
 
 
 import co.edu.umanizales.myfirstapi4.model.Parameter;
-import co.edu.umanizales.myfirstapi4.model.Product;
-import co.edu.umanizales.myfirstapi4.model.TypeDoc;
-import co.edu.umanizales.myfirstapi4.model.TypeProduct;
 import co.edu.umanizales.myfirstapi4.service.ParameterService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -35,4 +30,11 @@ public class ParameterController {
     public List<Parameter> getProducts() {
         return parameterService.getParametersByType(3);
     }
+
+
+    @GetMapping(path="bycode")
+    public List<Parameter> getTypeByDocumentCode() {
+        return parameterService.getParametersByType(4);
+    }
+
 }

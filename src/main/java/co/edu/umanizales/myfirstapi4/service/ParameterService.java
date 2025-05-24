@@ -1,5 +1,6 @@
 package co.edu.umanizales.myfirstapi4.service;
 import co.edu.umanizales.myfirstapi4.model.Parameter;
+import co.edu.umanizales.myfirstapi4.model.Product;
 import co.edu.umanizales.myfirstapi4.model.TypeDoc;
 import co.edu.umanizales.myfirstapi4.model.TypeProduct;
 import jakarta.annotation.PostConstruct;
@@ -34,9 +35,40 @@ public class ParameterService {
                         result.add(p);
                     }
                     break;
+                case 3:
+                    if(p instanceof Product){
+                        result.add(p);
+                    }
+                    break;
+                case 4:
+                default:
+                    System.out.println("El tipo ingresado no existe");
+                    return result;
             }
         }
+        if (result.isEmpty()){
+            System.out.println("No se encontró información para el tipo ingresado");
 
+        }
         return result;
+    }
+
+    public TypeDoc getTypeDocument(String type) {
+
+        for (Parameter p : parameters) {
+            if (p.getCode().equals(type)) {
+                return (TypeDoc) p;
+            }
+        }
+        return null;
+    }
+
+    public TypeProduct getTypeProduct(String type) {
+        for (Parameter p : parameters) {
+            if (p.getCode().equals(type)) {
+                return (TypeProduct) p;
+            }
+        }
+        return null;
     }
 }

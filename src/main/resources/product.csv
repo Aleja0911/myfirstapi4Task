@@ -1,8 +1,8 @@
-﻿type;price;stock ;;
-celulares;1500000;51;;
-cargador;48000;100;;
-audífonos;125000;25;;
-estuche;50000;95;;
-vidrio;20000;150;;
-pantalla;250000;25;;
-bateria;300000;30;;
+﻿code,name,price,stock,typeproduct
+24,celulares,1500000,51,equipos
+28,cargador,48000,100,accesorios
+25,audífonos,125000,25,accesorios
+26,estuche,50000,95,accesorios
+21,vidrio,20000,150,accesorios
+23,pantalla,250000,25,accesorios
+29,bateria,300000,30,accesorios

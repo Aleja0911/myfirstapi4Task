@@ -1,14 +1,12 @@
 package co.edu.umanizales.myfirstapi4.service;
+import co.edu.umanizales.myfirstapi4.model.Location;
 import co.edu.umanizales.myfirstapi4.model.Store;
 import jakarta.annotation.PostConstruct;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
-
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -18,37 +16,50 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
-@Getter
-@AllArgsConstructor
-@NoArgsConstructor
 @Service
+@Getter
 public class StoreService {
 
-        private List<Store> store = new ArrayList<>();
+    private final LocationService locationService;
+    private List<Store> store;
 
-        @Value("${store_filename}")
-        private String storeFilename;
+    @Value("${store_filename}")
+    private String store_filename;
 
-        @PostConstruct
-        public void readStoreFromCSV() throws IOException, URISyntaxException {
-            store= new ArrayList<>();
+    public StoreService(LocationService locationService) {
+        this.locationService = locationService;
+    }
 
-            Path pathFile = Paths.get(getClass().getClassLoader().getResource(storeFilename).toURI());
+    @PostConstruct
+    public void readStoreFromCSV() throws IOException, URISyntaxException {
+        store = new ArrayList<>();
 
-            try (CSVReader csvReader = new CSVReader(new FileReader(pathFile.toFile()))) {
-                csvReader.skip(1);
-                String[] line;
-                while ((line = csvReader.readNext()) != null) {
-                    store.add(new Store(line[0], line[1], line[2], line[3]));
-                }
-            } catch (CsvValidationException e) {
-                throw new RuntimeException("Error parsing CSV", e);
+        Path pathFile = Paths.get(ClassLoader.getSystemResource(store_filename).toURI());
+
+        try (CSVReader csvReader = new CSVReader(new FileReader(pathFile.toString()))) {
+            String[] line;
+            csvReader.skip(1);
+            //Leer todas las filas del CSV
+            while ((line = csvReader.readNext()) != null) {
+                System.out.println(line[1]);
+                Location city = locationService.getLocationByName(line[3]);
+                //Crear un nuevo objeto Store y agregarlo a la lista
+                store.add(new Store(line[0],line[1],line[2],city));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw e; //Lanza la excepción para que pueda manejarse en la capa superior si es necesario
+        } catch (CsvValidationException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Store seachStore(String code) {
+        for (Store store : store) {
+            if (store.getCode().equals(code)) {
+                return store;
             }
         }
-
-    public List<Store> getAllStores() {
-        return store;
+        return null;
     }
 }
-

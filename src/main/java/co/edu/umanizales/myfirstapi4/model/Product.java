@@ -11,11 +11,10 @@ public class Product extends Parameter {
     private int stock;
     private TypeProduct type;
 
-    public Product(String code, String description,  double price, int stock, TypeProduct type) {
-        super(code, description);
+    public Product(String code, String name, double price, int stock, TypeProduct type) {
+        super(code, name);
         this.price = price;
         this.stock = stock;
-        this.type= type;
-
+        this.type = type;
     }
 }

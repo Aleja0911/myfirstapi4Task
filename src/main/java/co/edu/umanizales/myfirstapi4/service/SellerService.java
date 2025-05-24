@@ -48,7 +48,12 @@ public class SellerService {
         }
 
     }
-    public List<Seller> getAllSeller() {
-        return seller;
-}
+    public Seller searchSeller(String identification) {
+    for (Seller seller : seller) {
+        if (seller.getIdentification().equals(identification)) {
+            return seller;
+        }
     }
+    return null;
+}
+}
