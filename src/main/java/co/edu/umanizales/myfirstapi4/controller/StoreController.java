@@ -1,5 +1,6 @@
 package co.edu.umanizales.myfirstapi4.controller;
 
+
 import co.edu.umanizales.myfirstapi4.service.StoreService;
 import co.edu.umanizales.myfirstapi4.model.Store;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping (path = "/store")
+@RequestMapping(path = "/store")
 public class StoreController {
-
 
     @Autowired
     private StoreService storeService;
@@ -22,3 +22,4 @@ public class StoreController {
         return storeService.getAllStores();
     }
 }
+

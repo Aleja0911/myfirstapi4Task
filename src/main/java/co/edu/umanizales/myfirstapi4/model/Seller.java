@@ -12,7 +12,7 @@ public class Seller {
     private String identification;
     private String name;
     private String lastName;
-    private String city;
+    private Location city;
     private byte age;
-    private char gender;
+    private TypeDoc typedoc;
 }
